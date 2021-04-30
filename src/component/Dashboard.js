@@ -30,8 +30,9 @@ class Dashboard extends Component{
         return(
             <Router>
                 <Navbar/>
-                <div className="dashBoard">
-                <Link to ='/answered'
+                <div className="dashContainer">
+                    <div className="dashLink">
+                    <Link to ='/answered'
                          className="btnAns"
                         onClick={() =>this.showAnsweredList()}>
                             Answered Questions
@@ -42,6 +43,10 @@ class Dashboard extends Component{
                             Non-Answered Questions
                         </Link>
 
+                    </div>
+                <div className="dashBoard">
+                
+
                 {this.state.showAnswered?
                 <Answered/> :
                 null}
@@ -49,6 +54,7 @@ class Dashboard extends Component{
                 {this.state.showNonAnswered?
                 <NoneAnswered/> :
                 null}                
+            </div>
             </div>
 
             </Router>

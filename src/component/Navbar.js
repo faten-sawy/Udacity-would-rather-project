@@ -1,22 +1,40 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router ,Link } from 'react-router-dom'
+import {connect} from 'react-redux'
+import { Link } from 'react-router-dom'
+
+
+import '../css/navbar.css'
 
 
 class Navbar extends Component {
     render(){
-        return(
-            <Router>
-                <div>
+        const{ authedUser } = this.props
+        console.log(authedUser)
+      //  console.log(id)
+       
+        return(    
+            <header>
                 <nav>
-                    <Link to='/' >Home</Link>
-                    <Link to='/new-question'>New Question</Link>
+                    <ul>
+                    <li><Link to='/' >Home</Link></li>
+                    <li><Link to='/new-question'>New Question</Link></li>
+                    {authedUser ?
+                    <li>Hi,{authedUser}</li> :
+                    null
+                    }
+                    
+                    </ul>
                 </nav>
-
-            </div>
-
-            </Router>
-            
+            </header>            
         )
     }
 }
-export default Navbar
+function mapStateToProps({authedUser}){
+    
+    return{
+        authedUser
+    }
+
+}
+
+export default connect(mapStateToProps)(Navbar)

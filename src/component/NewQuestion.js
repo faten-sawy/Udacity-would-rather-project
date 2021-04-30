@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/shared'
+import{ Redirect } from 'react-router-dom'
+import Navbar from './Navbar'
+
+import '../css/newQuestion.css'
 
 class NewQuestion extends Component {
     state = {
         optionOne: '',
         optionTwo: '',
+        flag: false
     }
 
     handelChangeOptionOne = (e) => {
@@ -26,14 +31,25 @@ class NewQuestion extends Component {
         e.preventDefault()
         const { optionOne, optionTwo } = this.state 
         this.props.addQuestion(optionOne,optionTwo)
+        this.setState({flag : true})
     }
 
     render(){
-        const { optionOne, optionTwo } = this.state 
+        const { optionOne, optionTwo } = this.state
+        
+        if(this.state.flag){
+          return  <Redirect to='/' />
+        }
 
         return(
             <div>
-                <form onSubmit={this.handelSubmit}>
+                <Navbar/>
+            
+            <div className="formContainer">
+                
+                <h1>Would You Rather... ?</h1>
+                <form onSubmit={this.handelSubmit}
+                        className="qustionForm">
                     <label htmlFor="optionOne">A :</label>
                     <input type="text"
                             onChange={this.handelChangeOptionOne}
@@ -46,11 +62,12 @@ class NewQuestion extends Component {
                             value={optionTwo}
                             name="optionTwo"
                             placeholder="Enter option two for Your question "/>
-                    <button disabled={optionOne === '' || optionTwo === ''}>
+                    <button  disabled={optionOne === '' || optionTwo === ''}>
                         Submit
                     </button>
                 </form>
 
+            </div>
             </div>
         )
     }

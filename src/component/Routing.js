@@ -3,17 +3,22 @@ import { Switch, Route} from 'react-router-dom'
 
 import Login from './Login'
 import Dashboard from './Dashboard'
+import NewQuestion from './NewQuestion'
 
 function Routing(props) {
+    const { logginFlag } = props
     return(
         <div>
             <Switch>
                 {
-                    props.logginFlag ?
+                    logginFlag ?
+                    <Route path='/' exact component={Login}/> :
+
                     <Fragment>
                         <Route path='/' exact component={Dashboard}/>
-                    </Fragment> :
-                    <Route path='/' exact component={Login}/>
+                        <Route exact path ='/new-question' component={NewQuestion}/>
+                    </Fragment> 
+                    
                 }
             </Switch>
         </div>

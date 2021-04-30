@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-//import { Avatar } from '@material-ui/core'
+
+import '../css/question.css'
 
 class Question extends Component {
     render(){
@@ -13,15 +14,18 @@ class Question extends Component {
         return(
             <div className="question"> 
                 <div className="avatar">
-                    <p>{user.name}</p>    
+                        
                     <img src={user.avatarURL} 
                             alt="this is avatar"
-                            className="avatar-img"/> 
-                </div>                    
+                            className="avatar-img"/>
+                    <p>{user.name}</p> 
+                </div>
+                <div className="space"></div>                    
                 <div className="info">  
                     <h1>Would You Rather</h1>
                     
-                    <p>{question.optionOne.text}...</p>
+                    <p>A: {question.optionOne.text}</p>
+                    <p>B: {question.optionTwo.text}</p>
                     <button>Go to voting</button>
                 </div> 
             </div>

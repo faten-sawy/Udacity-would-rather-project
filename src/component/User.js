@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { Redirect} from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
-import Dashboard from './Dashboard'
 
 class User extends Component {
     state = {
@@ -22,7 +21,7 @@ class User extends Component {
 
         if( flag === true){
             return(
-                <Redirect to="/Home"/>
+                <Redirect to="/"/>
             )
 
         }
