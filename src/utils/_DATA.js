@@ -2,7 +2,7 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: "https://www.flaticon.com/svg/vstatic/svg/2922/2922761.svg?token=exp=1619568151~hmac=a72fb04faf90c28ea6a13ce43b079760",
+    avatarURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiBeWgOQYWldulYxc7AMNd0bLQdoikycqeWDPmza3YUG5cnirVQy_yh2j6tdXmCcrzr44&usqp=CAU',
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -14,7 +14,7 @@ let users = {
   tylermcginnis: {
     id: 'tylermcginnis',
     name: 'Tyler McGinnis',
-    avatarURL: "https://cdn3.vectorstock.com/i/1000x1000/30/97/flat-business-man-user-profile-avatar-icon-vector-4333097.jpg" ,
+    avatarURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTB8wGVXx68KG4VZ1HcryDTRvSNLkBzOIV2PpUthPBX6QV2yOTQKPMOXRjobEKcxz736MA&usqp=CAU',
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: "https://cdn1.vectorstock.com/i/1000x1000/06/75/brunette-businesswoman-avatar-woman-face-profile-vector-21960675.jpg",
+    avatarURL: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRPNKg4c40JjRVHbOcOGnpuiPLTNBu8hj76RFd0WGwqZ48rq9Tg3ERQEnVIyaqvZ87-6k&usqp=CAU',
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -40,12 +40,12 @@ let questions = {
     author: 'sarahedo',
     timestamp: 1467166872634,
     optionOne: {
-      votes: ['sarahedo'],
-      text: 'have horrible short term memory',
+      votes:  [], //['sarahedo'],
+      text: 'Facebook',
     },
     optionTwo: {
       votes: [],
-      text: 'have horrible long term memory'
+      text: 'Tweeter'
     }
   },
   "6ni6ok3ym7mf1p33lnez": {
@@ -93,11 +93,11 @@ let questions = {
     timestamp: 1489579767190,
     optionOne: {
       votes: ['tylermcginnis'],
-      text: 'find $50 yourself',
+      text: 'Es6',
     },
     optionTwo: {
       votes: ['johndoe'],
-      text: 'have your best friend find $500'
+      text: 'Pure javascript'
     }
   },
   "xj352vofupe1dqz9emx13r": {
