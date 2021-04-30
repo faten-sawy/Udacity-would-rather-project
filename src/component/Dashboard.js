@@ -1,30 +1,59 @@
 import React,{ Component } from 'react'
-import { connect } from 'react-redux'
-import Question from './Question'
+import { BrowserRouter as Router ,Link } from 'react-router-dom'
+
+import Answered from './Answered'
+import NoneAnswered from './Non_answered'
+import Navbar from './Navbar'
 
 class Dashboard extends Component{
-    render(){
-        console.log(this.props)
+   constructor(){
+       super()
+       this.state = {
+           showAnswered : true ,
+           showNonAnswered : false ,
+       }
+   }
+   showAnsweredList(){
+       this.setState(()=>({
+           showAnswered: true,
+           showNonAnswered: false
+       }))
+   }
+
+   showNonAnswerdList(){
+       this.setState((state) =>({
+           showAnswered: false,
+           showNonAnswered: true
+       }))
+   }
+    render(){      
         return(
-            <div>
-                <ul>
-                    {this.props.questionIds.map((id) => (
-                        <li key = {id}>
-                            <Question id ={id}/>
-                        </li>
-                    ))
-                    }
-                </ul>
+            <Router>
+                <Navbar/>
+                <div className="dashBoard">
+                <Link to ='/answered'
+                         className="btnAns"
+                        onClick={() =>this.showAnsweredList()}>
+                            Answered Questions
+                        </Link>
+                <Link to='/non-answered'
+                        className="btnNonAns"
+                        onClick={()=> this.showNonAnswerdList()}>
+                            Non-Answered Questions
+                        </Link>
+
+                {this.state.showAnswered?
+                <Answered/> :
+                null}
+
+                {this.state.showNonAnswered?
+                <NoneAnswered/> :
+                null}                
             </div>
+
+            </Router>
+            
         )
     }
 }
-
-function mapStateToProps({questions}){
-    return{
-        questionIds: Object.keys(questions)
-        .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
-    }
-}
-
-export default connect(mapStateToProps)(Dashboard)
+export default Dashboard
