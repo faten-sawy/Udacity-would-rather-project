@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
-import { BrowserRouter as Router} from 'react-router-dom'
+import { BrowserRouter} from 'react-router-dom'
 //import { LoadingBar } from 'react-redux-loading';
 import Navbar from './Navbar'
 import Routing from './Routing'
+import Voting from './Voting'
 import '../App.css';
-import { Fragment } from 'react'
+
 
 
 
@@ -18,12 +19,19 @@ class App extends Component {
     const { logginFlag } = this.props
     console.log(logginFlag)
     return (
-      <Router>
-        <Fragment>
+     /*  {/* <BrowserRouter>
+      
           <Navbar/>
           <Routing logginFlag={logginFlag}/>
-        </Fragment>
-      </Router>
+       
+      
+      </BrowserRouter> */
+      <div>
+        <Voting/>
+        </div>
+      
+        
+      
     
     );
   }

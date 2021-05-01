@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import{ Link } from 'react-router-dom'
+import Voting from './Voting'
 
 import '../css/question.css'
 
@@ -26,7 +28,7 @@ class Question extends Component {
                     
                     <p>A: {question.optionOne.text}</p>
                     <p>B: {question.optionTwo.text}</p>
-                    <button>Go to voting</button>
+                    <Link to='/voting' render={()=>(<Voting/>)}>Go to voting</Link>
                 </div> 
             </div>
         )

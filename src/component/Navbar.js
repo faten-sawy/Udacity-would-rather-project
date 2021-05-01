@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 
 import '../css/navbar.css'
+import NewQuestion from './NewQuestion'
 
 
 class Navbar extends Component {
@@ -17,7 +18,7 @@ class Navbar extends Component {
                 <nav>
                     <ul>
                     <li><Link to='/' >Home</Link></li>
-                    <li><Link to='/new-question'>New Question</Link></li>
+                    <li><Link to='/newQuestion' render={() => <NewQuestion/>}>New Question</Link></li>
                     {authedUser ?
                     <li>Hi,{authedUser}</li> :
                     null

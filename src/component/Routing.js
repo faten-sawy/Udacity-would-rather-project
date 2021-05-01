@@ -4,6 +4,7 @@ import { Switch, Route} from 'react-router-dom'
 import Login from './Login'
 import Dashboard from './Dashboard'
 import NewQuestion from './NewQuestion'
+import Voting from './Voting'
 
 function Routing(props) {
     const { logginFlag } = props
@@ -16,7 +17,13 @@ function Routing(props) {
 
                     <Fragment>
                         <Route path='/' exact component={Dashboard}/>
-                        <Route exact path ='/new-question' component={NewQuestion}/>
+                        <Route  path ="/newQuestion" render={() => (
+                            <NewQuestion/>
+                        )}/>
+                        <Route path='/voting' render={() =>(
+                            <Voting/>
+
+                        )}></Route>
                     </Fragment> 
                     
                 }
