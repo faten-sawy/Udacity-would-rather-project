@@ -19,20 +19,16 @@ class App extends Component {
     const { logginFlag } = this.props
     console.log(logginFlag)
     return (
-     /*  {/* <BrowserRouter>
+      <BrowserRouter>
       
           <Navbar/>
           <Routing logginFlag={logginFlag}/>
        
       
-      </BrowserRouter> */
-      <div>
+      </BrowserRouter>
+      /* {/* <div>
         <Voting/>
-        </div>
-      
-        
-      
-    
+        </div> */ 
     );
   }
 }
