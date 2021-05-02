@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import Fragment from 'render-fragment'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
-import { BrowserRouter} from 'react-router-dom'
+import { BrowserRouter, Route} from 'react-router-dom'
 //import { LoadingBar } from 'react-redux-loading';
 import Navbar from './Navbar'
 import Routing from './Routing'
@@ -20,15 +21,14 @@ class App extends Component {
     console.log(logginFlag)
     return (
       <BrowserRouter>
-      
-          <Navbar/>
-          <Routing logginFlag={logginFlag}/>
-       
-      
+       <Fragment>
+        <Navbar/>
+        <Routing logginFlag={logginFlag}/>
+       </Fragment>  
       </BrowserRouter>
-      /* {/* <div>
+      /* <div>
         <Voting/>
-        </div> */ 
+      </div> */
     );
   }
 }

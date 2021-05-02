@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 
 import '../css/navbar.css'
@@ -17,12 +17,13 @@ class Navbar extends Component {
             <header>
                 <nav>
                     <ul>
-                    <li><Link to='/' >Home</Link></li>
-                    <li><Link to='/newQuestion' render={() => <NewQuestion/>}>New Question</Link></li>
+                    <li><NavLink to='/' exact >Home</NavLink></li>
+                    <li><NavLink to='/newQuestion'>New Question</NavLink></li>
                     {authedUser ?
                     <li>Hi,{authedUser}</li> :
                     null
                     }
+                    {/* //render={() => <NewQuestion/>} */}
                     
                     </ul>
                 </nav>
@@ -30,12 +31,10 @@ class Navbar extends Component {
         )
     }
 }
-function mapStateToProps({authedUser}){
-    
+function mapStateToProps({authedUser}){    
     return{
         authedUser
     }
-
 }
 
 export default connect(mapStateToProps)(Navbar)
