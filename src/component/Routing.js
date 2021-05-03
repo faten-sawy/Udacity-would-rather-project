@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Switch, Route} from 'react-router-dom'
+import Fragment from 'render-fragment'
 
 import Login from './Login'
 import Dashboard from './Dashboard'
@@ -11,19 +12,13 @@ function Routing(props) {
     return(
         <div>
             <Switch>
-                {
-                    logginFlag ?
-                    <Route path='/' exact component={Login}/> :
+                { logginFlag ?
+                    <Route exact component={Login}/> :
 
                     <Fragment>
                         <Route path='/' exact component={Dashboard}/>
-                        <Route  path ="/newQuestion" render={() => (
-                            <NewQuestion/>
-                        )}/>
-                        <Route path='/voting' render={() =>(
-                            <Voting/>
-
-                        )}></Route>
+                        <Route path="/newQuestion" component={NewQuestion}/>
+                        <Route path="/voting/:qid" render={(props) => <Voting {...props}/>} />        
                     </Fragment> 
                     
                 }

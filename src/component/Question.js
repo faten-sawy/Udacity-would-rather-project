@@ -1,22 +1,40 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import{ Link } from 'react-router-dom'
+import { handleQuestionAnswer } from '../actions/shared'
+import PropTypes from 'prop-types';
+
+import{ Link ,Route,Redirect } from 'react-router-dom'
 import Voting from './Voting'
 
 import '../css/question.css'
+import { saveAnswer } from '../actions/questions';
 
 class Question extends Component {
+    state = {
+        viewVoting : false
+    }
+    handle =() => {
+        this.setState({
+            viewVoting: true
+        })
+    }
+    
     render(){
-    //console.log(this.props)
-    const { question, user } = this.props
-   // const answerOne = question.optionOne.votes
-    //const answerTwo = question.optionTwo.votes
-   // console.log(user)
-   // console.log(answerOne,answerTwo)
+    const { question, user} = this.props
+    console.log(question)
+    if (this.state.viewVoting===true) {
+        return(           
+            <Redirect to ={{
+                pathname: `/voting/${question.id}`,
+                state: {question : question}
+            }}/>    
+        )
+    }
+
+    
         return(
             <div className="question"> 
-                <div className="avatar">
-                        
+                <div className="avatar">      
                     <img src={user.avatarURL} 
                             alt="this is avatar"
                             className="avatar-img"/>
@@ -28,12 +46,15 @@ class Question extends Component {
                     
                     <p>A: {question.optionOne.text}</p>
                     <p>B: {question.optionTwo.text}</p>
-                    <Link to='/voting' render={()=>(<Voting/>)}>Go to voting</Link>
-                </div> 
+                    <button onClick={this.handle} >Go to voting</button>
+                </div>
             </div>
         )
     }
 }
+
+
+  
 
 function mapStateToProps({users,questions},{id}){
     const question = questions[id]

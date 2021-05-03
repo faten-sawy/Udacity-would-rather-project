@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Fragment from 'render-fragment'
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
-import { BrowserRouter, Route} from 'react-router-dom'
+import { BrowserRouter} from 'react-router-dom'
 //import { LoadingBar } from 'react-redux-loading';
 import Navbar from './Navbar'
 import Routing from './Routing'
@@ -26,9 +26,7 @@ class App extends Component {
         <Routing logginFlag={logginFlag}/>
        </Fragment>  
       </BrowserRouter>
-      /* <div>
-        <Voting/>
-      </div> */
+      
     );
   }
 }
