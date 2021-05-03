@@ -1,9 +1,7 @@
 import React,{ Component } from 'react'
-import { BrowserRouter as Router ,Link } from 'react-router-dom'
-
 import Answered from './Answered'
 import NoneAnswered from './Non_answered'
-import Navbar from './Navbar'
+
 
 class Dashboard extends Component{
    constructor(){
@@ -27,39 +25,34 @@ class Dashboard extends Component{
        }))
    }
     render(){      
-        return(
-            <Router>
-                <Navbar/>
-                <div className="dashContainer">
-                    <div className="dashLink">
-                    <Link to ='/answered'
-                         className="btnAns"
-                        onClick={() =>this.showAnsweredList()}>
-                            Answered Questions
-                        </Link>
-                <Link to='/non-answered'
-                        className="btnNonAns"
-                        onClick={()=> this.showNonAnswerdList()}>
-                            Non-Answered Questions
-                        </Link>
+        return(     
+            <div className="dashContainer">
+                <div className="dashLink">
+                <button to ='/answered'
+                        className="btnAns"
+                    onClick={() =>this.showAnsweredList()}>
+                        Answered Questions
+                    </button>
+            <button to='/non-answered'
+                    className="btnNonAns"
+                    onClick={()=> this.showNonAnswerdList()}>
+                        Non-Answered Questions
+                    </button>
 
-                    </div>
-                <div className="dashBoard">
-                
-
-                {this.state.showAnswered?
-                <Answered/> :
-                null}
-
-                {this.state.showNonAnswered?
-                <NoneAnswered/> :
-                null}                
-            </div>
-            </div>
-
-            </Router>
+                </div>
+            <div className="dashBoard">
             
-        )
+
+            {this.state.showAnswered?
+            <Answered/> :
+            null}
+
+            {this.state.showNonAnswered?
+            <NoneAnswered/> :
+            null}                
+        </div>
+        </div>
+ )
     }
 }
 export default Dashboard

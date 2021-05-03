@@ -5,20 +5,26 @@ import Fragment from 'render-fragment'
 import Login from './Login'
 import Dashboard from './Dashboard'
 import NewQuestion from './NewQuestion'
-import Voting from './Voting'
+import LeaderBoard from './Leaderboard'
+import Navbar from './Navbar'
+
 
 function Routing(props) {
     const { logginFlag } = props
     return(
         <div>
+            {!logginFlag && <Navbar/>}
             <Switch>
+            
                 { logginFlag ?
                     <Route exact component={Login}/> :
 
                     <Fragment>
+                        
                         <Route path='/' exact component={Dashboard}/>
                         <Route path="/newQuestion" component={NewQuestion}/>
-                        <Route path="/voting/:qid" render={(props) => <Voting {...props}/>} />        
+                        <Route path="/leaderBoard" component={LeaderBoard}/>
+                        {/* <Route path="/voting/:qid" render={(props) => <Voting {...props}/>} /> */}        
                     </Fragment> 
                     
                 }

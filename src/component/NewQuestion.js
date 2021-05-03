@@ -35,12 +35,10 @@ class NewQuestion extends Component {
     }
 
     render(){
-        const { optionOne, optionTwo } = this.state
-        
+        const { optionOne, optionTwo } = this.state    
         if(this.state.flag){
           return  <Redirect to='/' />
         }
-
         return(
             <div>
                 <Navbar/>

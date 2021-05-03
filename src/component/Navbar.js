@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 
 
 import '../css/navbar.css'
-import NewQuestion from './NewQuestion'
+
 
 
 class Navbar extends Component {
@@ -19,6 +19,7 @@ class Navbar extends Component {
                     <ul>
                     <li><NavLink to='/' exact >Home</NavLink></li>
                     <li><NavLink to='/newQuestion'>New Question</NavLink></li>
+                    <li><NavLink to="/leaderBoard"> Leader Board</NavLink></li>
                     {authedUser ?
                     <li>Hi,{authedUser}</li> :
                     null
