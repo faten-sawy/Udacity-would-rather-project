@@ -18,10 +18,17 @@ export default function users(state = {} ,action) {
                 }
             };
         case USER_ANSWER_QUESTION :
+            const { authedUser, qid, Option } = action ;
+            
             return{
                 ...state,
-                
-
+                [authedUser]: {
+                    ...state[authedUser],
+                    answers: {
+                        ...state[authedUser].answers,
+                        [qid]:Option
+                    }
+                }
             }
 
         default:
