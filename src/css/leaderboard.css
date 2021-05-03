@@ -1,0 +1,11 @@
+.leaderBoard {
+  display: flex;
+  position: relative;
+  top: 120px;
+  border-bottom: 1px solid chocolate;
+  padding: 50px;
+}
+.info {
+  position: relative;
+  left: 30px;
+}
