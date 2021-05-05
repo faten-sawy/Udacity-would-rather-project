@@ -16,9 +16,8 @@ class NoneAnswered extends Component {
                         console.log(questions[id].optionOne)
                         console.log(questions[id].optionOne.votes)
                         if (
-                            (!questions[id].optionOne.votes.includes(authedUser))&& 
-                            (!questions[id].optionTwo.votes.includes(authedUser))&&
-                            (questions[id].author !== authedUser))
+                            (questions[id].optionOne.votes.length === 0)&& 
+                            (questions[id].optionTwo.votes.length === 0))
                           {     
                             return(
                                 <li key = {id}>
