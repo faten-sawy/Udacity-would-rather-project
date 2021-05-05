@@ -2,29 +2,23 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { NavLink } from 'react-router-dom'
 
-
 import '../css/navbar.css'
-
-
-
 class Navbar extends Component {
     render(){
         const{ authedUser } = this.props
         console.log(authedUser)
-      //  console.log(id)
-       
         return(    
             <header>
                 <nav>
-                    <ul>
+                <ul>
                     <li><NavLink to='/' exact >Home</NavLink></li>
-                    <li><NavLink to='/newQuestion'>New Question</NavLink></li>
-                    <li><NavLink to="/leaderBoard"> Leader Board</NavLink></li>
+                    <li><NavLink to='/add'>New Question</NavLink></li>
+                    <li><NavLink to="/leaderboard"> Leader Board</NavLink></li>
                     {authedUser ?
                     <li>Hi,{authedUser}</li> :
                     null
                     }
-                    {/* //render={() => <NewQuestion/>} */}
+                    
                     
                     </ul>
                 </nav>

@@ -7,6 +7,7 @@ import Dashboard from './Dashboard'
 import NewQuestion from './NewQuestion'
 import LeaderBoard from './Leaderboard'
 import Navbar from './Navbar'
+import Voting from './Voting'
 
 
 function Routing(props) {
@@ -15,18 +16,15 @@ function Routing(props) {
         <div>
             {!logginFlag && <Navbar/>}
             <Switch>
-            
                 { logginFlag ?
-                    <Route exact component={Login}/> :
-
-                    <Fragment>
-                        
+                    <Route  exact component={Login}/> :
+                    <Fragment>   
                         <Route path='/' exact component={Dashboard}/>
-                        <Route path="/newQuestion" component={NewQuestion}/>
-                        <Route path="/leaderBoard" component={LeaderBoard}/>
-                        {/* <Route path="/voting/:qid" render={(props) => <Voting {...props}/>} /> */}        
-                    </Fragment> 
-                    
+                        <Route path ="/questions/:qid" component={Voting}/>
+                        <Route path="/add" component={NewQuestion}/>
+                        <Route path="/leaderboard" component={LeaderBoard}/>
+                        {/* <Route path ="/questions/:qid" component={Voting}/> */}
+                    </Fragment>       
                 }
             </Switch>
         </div>

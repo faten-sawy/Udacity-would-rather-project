@@ -1,18 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import Voting from './Voting'
 import '../css/question.css'
+import { Link, withRouter } from 'react-router-dom'
 
 class Question extends Component {
-    state = {
-        viewVoting : false
-    }
-    handle =() => {
-        this.setState({
-            viewVoting: true
-        })
-    }
-    
     render(){
     const { question, user} = this.props
     //console.log(question)
@@ -30,17 +21,12 @@ class Question extends Component {
                 
                 <p>A: {question.optionOne.text}</p>
                 <p>B: {question.optionTwo.text}</p>
-                <button onClick={this.handle}>Go to voting</button>
+                <Link to={`/questions/${question.id}`}>Go to voting</Link>
             </div>
-            {this.state.viewVoting===true ?
-            <Voting id ={question.id}/> : null}
         </div>
     )
     }
 }
-
-
-  
 
 function mapStateToProps({users,questions},{id}){
     const question = questions[id]
@@ -52,4 +38,4 @@ function mapStateToProps({users,questions},{id}){
     }
 }
 
-export default connect(mapStateToProps)(Question)
+export default withRouter(connect(mapStateToProps)(Question))

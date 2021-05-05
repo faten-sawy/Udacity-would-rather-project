@@ -4,13 +4,8 @@ import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import { BrowserRouter as Router} from 'react-router-dom'
 //import { LoadingBar } from 'react-redux-loading';
-
 import Routing from './Routing'
-
 import '../App.css';
-
-
-
 
 class App extends Component {
   componentDidMount() {

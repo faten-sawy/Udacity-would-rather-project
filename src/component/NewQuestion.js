@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/shared'
 import{ Redirect } from 'react-router-dom'
-import Navbar from './Navbar'
+//import Navbar from './Navbar'
 
 import '../css/newQuestion.css'
 
@@ -41,8 +41,6 @@ class NewQuestion extends Component {
         }
         return(
             <div>
-                <Navbar/>
-            
             <div className="formContainer">
                 
                 <h1>Would You Rather... ?</h1>

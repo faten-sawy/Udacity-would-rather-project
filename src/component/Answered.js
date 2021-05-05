@@ -4,18 +4,19 @@ import Question from './Question'
 
 class Answered extends Component {   
     render(){
-        const {questions, questionIds} = this.props
+        const {questions, questionIds,authedUser} = this.props
         return(
             <div>
                 <ul>
                     {questionIds.map((id) => {
                         console.log(questions[id].optionOne.votes.length)
-                        if  ((questions[id].optionOne.votes.length !==0 )|| 
-                            (questions[id].optionTwo.votes.length !==0 ))
+                        if  ((questions[id].author !== authedUser) &&
+                            ((questions[id].optionOne.votes.includes(authedUser))|| 
+                            (questions[id].optionTwo.votes.includes(authedUser))))
                             {
                                 return(
                                     <li key = {id}>
-                                        <Question id ={id}/>
+                                      <Question id ={id}/>
                                     </li>
                                 )
                             }
@@ -29,9 +30,10 @@ class Answered extends Component {
         )
     }
 }
-function mapStateToProps({questions}){
+function mapStateToProps({questions,authedUser}){
     console.log(questions)   
     return{
+        authedUser,
         questions,
         questionIds: Object.keys(questions)
         .sort((a,b) => questions[b].timestamp - questions[a].timestamp)

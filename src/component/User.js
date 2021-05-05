@@ -23,11 +23,8 @@ class User extends Component {
             return(
                 <Redirect to="/"/>
             )
-
         }
-
-        return(
-            
+        return(           
                 <Fragment>
                     <div className="user">
                         <img src ={users[user.id].avatarURL}
