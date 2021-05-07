@@ -1,6 +1,6 @@
 import React ,{ Component } from 'react'
 import { connect } from 'react-redux'
-import { handleQuestionAnswer } from '../actions/shared'
+import { handleAnswer } from '../actions/shared'
 import '../css/voting.css'
 
 
@@ -9,7 +9,7 @@ class Voting extends Component {
     optionValue :'',
     showResult : false
 }
-onChange = (e) =>{
+changeValue = (e) =>{
     let val = e.target.value
     this.setState({
         optionValue: val
@@ -18,23 +18,24 @@ onChange = (e) =>{
 
 
 SubmitValue = (e) => {
-    console.log("SubmitValue")
+    e.preventDefault();
+    //console.log("SubmitValue")
     if (this.state.optionValue !== ''){
-        const { authedUser, question, handleQuestionAnswer } = this.props;
-        console.log(authedUser)
-        handleQuestionAnswer(authedUser,question.id, this.state.optionValue)
+        this.props.saveAnswer(this.state.optionValue)
+        console.log("Done save")
     }
     this.setState({
         showResult : true
     })
-    console.log(this.state.showResult) ;
-}   
+    //console.log(this.state.showResult) ;
+}
+
 render(){
     const { question,user } = this.props;
     console.log(question)
     let max = question.optionOne.votes.length +question.optionTwo.votes.length
-    let optionOnePercent = (question.optionOne.votes.length / max) *100
-    let optionTwoPercent = (question.optionTwo.votes.length / max) * 100
+    let optionOnePercent =(question.optionOne.votes.length / max) *100
+    let optionTwoPercent =(question.optionTwo.votes.length / max) * 100
     console.log(user)
     console.log(optionOnePercent)
     return(
@@ -46,7 +47,8 @@ render(){
             <input type="radio" value="optionOne" name="option" onChange={this.changeValue}/>
                 <label htmlFor="optionOne" >A :{question.optionOne.text}</label>
                 <input type="radio" value="optionTwo" name="option" onChange={this.changeValue}/> 
-                <label htmlFor="optionTwo" >B : {question.optionTwo.text}</label>                <button type="submit" onClick={this.SubmitValue}>Submit</button>
+                <label htmlFor="optionTwo" >B : {question.optionTwo.text}</label>
+                <button type="submit" onClick={this.SubmitValue}>Submit</button>
             </div>
             {this.state.showResult === true ?
               <div> 
@@ -57,22 +59,28 @@ render(){
               <p>Total numbers Voting {max}</p>
 
               </div>:null}
-              
-                
+                             
         </div>
     )
 }
 }
-function mapStateToProps({questions ,authedUser,users},{match}){
+function mapStateToProps({questions, authedUser, users},{match}){
   const { qid } =match.params
   const question = questions[qid]
   const user =users[question.author]
-return{
-    question,
-    authedUser,
-    user
+    return{
+        question,
+        authedUser,
+        user
+    }
 }
-}
-
-
-export default connect(mapStateToProps,{handleQuestionAnswer})(Voting)
+function mapDispatchToProps(dispatch, props) {
+    const { id } = props.match.params;
+  
+    return {
+        saveAnswer: (answer) => {
+        dispatch(handleAnswer(id, answer))
+      }
+    }
+  }
+export default connect(mapStateToProps, mapDispatchToProps)(Voting)
