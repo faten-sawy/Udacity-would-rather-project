@@ -1,11 +1,11 @@
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'
-export const SAVE_QUESTION_ANSWER = 'SAVE_ANSWER' 
+export const SAVE_QUESTION_ANSWER = 'SAVE_QUESTION_ANSWER' 
 
-export function receiveQuestions(question){
+export function receiveQuestions(questions){
     return{
         type : RECEIVE_QUESTIONS ,
-        question
+        questions
     }
 }
 
