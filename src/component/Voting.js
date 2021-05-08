@@ -75,11 +75,11 @@ function mapStateToProps({questions, authedUser, users},{match}){
     }
 }
 function mapDispatchToProps(dispatch, props) {
-    const { id } = props.match.params;
+    const { qid } = props.match.params;
   
     return {
         saveAnswer: (answer) => {
-        dispatch(handleAnswer(id, answer))
+        dispatch(handleAnswer(qid, answer))
       }
     }
   }
